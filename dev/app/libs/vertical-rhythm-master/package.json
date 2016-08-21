@@ -1,0 +1,17 @@
+{
+  "name": "vertical-rhythm",
+  "title": "Vertical Rhythm",
+  "version": "0.1.0",
+  "author": "Olaf Muller",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-notify": "^0.4.1",
+    "grunt-sass": "^1.1.0-beta",
+    "load-grunt-tasks": "^3.3.0"
+  }
+}
