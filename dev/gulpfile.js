@@ -5,7 +5,8 @@ browserSync = require('browser-sync'),
 concat = require('gulp-concat'),
 uglify = require('gulp-uglifyjs'),
 autoprefixer = require('gulp-autoprefixer'),
-del =  require('del');
+del =  require('del'),
+notify = require("gulp-notify");
 
 
 gulp.task('fonts', function(){
@@ -24,10 +25,17 @@ gulp.task('images', function(){
 
 gulp.task('sass', ['fonts', 'images'], function(){
 
-	return gulp.src('app/sass/*.scss')
+	return gulp.src('app/sass/style.scss')
 	.pipe(sass({ 
 						includePaths : ['app/sass/'] // доп. костыль что бы работал sass, не уверен что он по прежнему необходим!
 					}))
+	.on("error", notify.onError({ // отлавливаем ошибку и выводим сообщение о ней в toaster винды
+		message: "Error: <%= error.message %>",
+		title: "Style",
+		sound: true,
+		wait: true
+	})
+	)
 	.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
 	.pipe(minifyCss({
 						keepSpecialComments: 1 // минифицирукм CSS с сохранение важных комментов
@@ -74,7 +82,7 @@ gulp.task('browser-sync', function(){
 
 gulp.task('watch', ['browser-sync', 'sass', 'scripts'], function(){
 	gulp.watch('app/sass/**/*.scss', ['sass']); // подклюсаем наблюдение за изменениями в SASS файлах и вызываем таск sass в случае необходимости
-	gulp.watch('../**/*.php', browserSync.reload);// наблюдение за PHP файлами темы и перезагрузка
+	gulp.watch('../*.php', browserSync.reload);// наблюдение за PHP файлами темы и перезагрузка
 	gulp.watch('app/js/**/*.js', ['scripts']); // подклюсаем наблюдение за изменениями в js файлах и вызываем таск scripts в случае необходимости
 	gulp.watch('app/images/**', ['images']); // подклюсаем наблюдение за изменениями в папке с картинками 
 })

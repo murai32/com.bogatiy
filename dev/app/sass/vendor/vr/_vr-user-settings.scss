@@ -3,13 +3,13 @@ $show-baseline:					true; // Doesn't work in IE and Edge
 
 // Typography
 $font-display:					AGrotesk, sans-serif;
-$font-body:						AGarmond, serif;
-$font-mono:						'Courier New', monospace;
+$font-body:						AGaramond, serif;
+$font-mono:						AGaramond, serif;
 
 // To get the cap height: zoom to 500% in your browser and adjust these values.
 $cap-font-display:				0.22em;
-$cap-font-body:					0.2em;
-$cap-font-mono:					0.235em;
+$cap-font-body:					0.21em;
+$cap-font-mono:					0.21em;
 
 $px-font-size:					16; // Pixels
 $px-line-height:				24; // Pixels

@@ -13,22 +13,13 @@
  */
 
 get_header(); ?>
-<ul class="catalog">
-				<li>список 1</li>
-				<li>список 2</li>
-				<li>список 3</li>
-			</ul>
-			<ul class="catalog">
-				<li>список 1</li>
-				<li>список 2</li>
-				<li>список 3</li>
-			</ul>			
-<h2>Ириски</h2>
+
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 			<?php
+			
 			while ( have_posts() ) : the_post();
 
 				get_template_part( 'template-parts/content', 'page' );
@@ -44,8 +35,13 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
+
+
 <?php
+/*
 get_sidebar();
-//get_footer();
+get_footer();
+
+*/
 
 
