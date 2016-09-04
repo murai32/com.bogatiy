@@ -1,0 +1,42 @@
+@import "breakpoint";
+@import "singularitygs";
+@import "singularity-extras/generators/ratio";
+@import "singularity-extras/generators/snap";
+@import "singularity-extras/outputs";
+
+@include add-grid(400px 1 300px);
+@include add-gutter(1em);
+@include sgs-change('output', 'calc');
+
+// @debug ratio(2, 5);
+// @debug snap(ratio(2, 5), .25);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  background: red;
+  @include grid-span(1, 2);
+}
+
+.primary-sidebar {
+  background: green;
+  @include grid-span(1, 1);
+}
+
+.secondary-sidebar {
+  background: blue;
+  @include grid-span(1, 3);
+}

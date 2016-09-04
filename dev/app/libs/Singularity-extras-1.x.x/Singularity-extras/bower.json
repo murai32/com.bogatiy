@@ -1,0 +1,14 @@
+{
+  "name": "singularity-extras",
+  "version": "1.0.0.alpha.1",
+  "main": "stylesheets/_singularity-extras.scss",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "singularity": "~>1.2.0.rc.1",
+    "modular-scale": "~>2.0.0.alpha5"
+  }
+}

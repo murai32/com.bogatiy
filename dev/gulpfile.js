@@ -6,7 +6,8 @@ concat = require('gulp-concat'),
 uglify = require('gulp-uglifyjs'),
 autoprefixer = require('gulp-autoprefixer'),
 del =  require('del'),
-notify = require("gulp-notify");
+notify = require('gulp-notify'),
+svgmin = require('gulp-svgmin');
 
 
 gulp.task('fonts', function(){
@@ -15,9 +16,17 @@ gulp.task('fonts', function(){
 	.pipe(gulp.dest('../fonts/'))
 })
 
+gulp.task('svg', function(){
+	gulp.src('app/images/svg/**/*.svg')
+	.pipe(svgmin())
+	.pipe(gulp.dest('./app/images/svg/'));
+})
 
-gulp.task('images', function(){
-	del.sync(['../images/**'], {force: true});
+gulp.task('images', /*['svg'],*/ function(){
+	//
+	//	!!!! подключить оптимизацаю SVG и ужимку картинок!!
+	//
+	//del.sync(['../images/**/*', , '!../images'], {force: true});
 	gulp.src('app/images/**')
 	.pipe(gulp.dest('../images/'))
 })
@@ -74,17 +83,11 @@ gulp.task('browser-sync', function(){
 
 })
 
-
-
-
-////// *** !!! ДОБАВИТЬ ТАСКИ НА ПЕРМЕШЕНИЕ КАРТИНОК И ШРИФТОВ и читку их конечного каталога!!! *** //////
-
-
 gulp.task('watch', ['browser-sync', 'sass', 'scripts'], function(){
 	gulp.watch('app/sass/**/*.scss', ['sass']); // подклюсаем наблюдение за изменениями в SASS файлах и вызываем таск sass в случае необходимости
 	gulp.watch('../*.php', browserSync.reload);// наблюдение за PHP файлами темы и перезагрузка
 	gulp.watch('app/js/**/*.js', ['scripts']); // подклюсаем наблюдение за изменениями в js файлах и вызываем таск scripts в случае необходимости
-	gulp.watch('app/images/**', ['images']); // подклюсаем наблюдение за изменениями в папке с картинками 
+	gulp.watch('app/images/**/*', ['images']); // подклюсаем наблюдение за изменениями в папке с картинками 
 })
 
 gulp.task('default', ['watch']);// замыкаем выполнение всех заданий на вызов "gulp" 

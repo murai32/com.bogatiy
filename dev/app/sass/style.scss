@@ -1,0 +1,50 @@
+/*!
+Theme Name: Bogatiy Pavel portfolio
+Author: Pavel Bogatiy
+Author URI: http://bogatiy.com
+Version: 1.0.0
+License: GNU General Public License
+
+*/
+
+
+@charset 'UTF-8';
+
+// 1. Configuration and helpers
+@import
+  'helpers/variables',
+  //'helpers/functions',
+  'helpers/mixins';
+
+// 2. Vendors
+@import
+  //'vendor/_underscore-start.scss',
+  'vendor/vr/vr-main',
+  'vendor/singularitygs',
+  'vendor/singularity-extras/outputs';
+
+// 3. Base stuff
+@import
+  //'base/base',
+  'base/fonts';
+  //'base/typography';
+  //'base/helpers';
+
+// 4. Layout-related sections
+@import
+  "layout/grid_config",
+  'layout/header';
+  //'layout/footer';
+
+// 5. Components
+@import
+  //'components/button';
+  'components/navigation';
+
+// 6. Page-specific styles
+//@import
+  //'pages/home';
+
+// 7. Themes
+//@import
+  //'themes/default';

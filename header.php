@@ -61,13 +61,14 @@
 			</div>				 
 		</div>
 		<div class="site-header__main-navigation">
-			<nav class="main-navigation" role="navigation">
-<!-- 				<?php 
-wp_nav_menu( array( 'theme_location' => 'main', 'menu_class' => 'main-menu' ) ); 
-?> -->
+			<nav class="site-header__main-menu" role="navigation">
+<?php 
+//wp_nav_menu( array( 'theme_location' => 'main', 'menu_class' => 'main-menu' ) ); 
+?> 
 
 		<?php 
-		bem_menu('main', 'my-menu', 'my-menu_my-modifier'); 
+		///bem_menu('main', 'main-menu', 'my-menu_my-modifier');  с модификатором
+		bem_menu_bogatiy_main('main', 'main-menu'); 
 		?>
 		
 
@@ -75,11 +76,10 @@ wp_nav_menu( array( 'theme_location' => 'main', 'menu_class' => 'main-menu' ) );
 			</nav>
 		</div>
 		<div class="site-header__social-links">
-			<nav class="social-links" role="navigation">
 				<?php 
-				wp_nav_menu( array( 'theme_location' => 'socials-links', 'menu_class' => 'social-links-menu' ) ); 
+				/*wp_nav_menu( array( 'theme_location' => 'socials-links', 'menu_class' => 'social-links-menu' ) );*/
+				bem_menu_bogatiy_main('socials-links', 'social-links');  
 				?>
-			</nav>
 		</div> 
 
 

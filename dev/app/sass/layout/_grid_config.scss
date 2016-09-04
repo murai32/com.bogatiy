@@ -1,0 +1,21 @@
+
+/* Set Singularit GS setting  */
+
+//@include sgs-change('mobile first', false);
+
+
+/// Settings for base grid map
+@mixin get-grid($type: 'base', $show-grid: false){
+	clear: both;
+	@if $type == 'base' {
+		@include add-grid(8);
+		@include add-gutter(.3);
+		@include sgs-change('gutter styles', 'opposite');
+		@include get-desktop-width('center');
+		@include sgs-change('output', 'float');
+	}
+	
+	@if $show-grid == true {
+				@include show-sgs-grid(.15);
+		}
+}

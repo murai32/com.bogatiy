@@ -176,5 +176,4 @@ require get_template_directory() . '/tgm/theme-plugin-activator.php';
  * https://github.com/roikles/Wordpress-Bem-Menu
  */
 require get_template_directory() . '/lib/plugins/Wordpress-Bem-Menu/wp_bem_menu.php';
-//var_dump(get_template_directory() . '/lib/plugins/Wordpress-Bem-Menu/wp_bem_menu.php');
-
+require get_template_directory() . '/lib/plugins/Wordpress-Bem-Menu/wp_bem_menu_bogatiy_main.php';

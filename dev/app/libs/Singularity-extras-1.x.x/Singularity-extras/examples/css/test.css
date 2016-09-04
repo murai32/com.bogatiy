@@ -1,0 +1,46 @@
+/* line 14, ../sass/test.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 18, ../sass/test.scss */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 23, ../sass/test.scss */
+div {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 29, ../sass/test.scss */
+.main {
+  background: red;
+  width: -webkit-calc((((100% - (700px + 2em)) / (1))) * 1);
+  width: calc((((100% - (700px + 2em)) / (1))) * 1);
+  float: left;
+  margin-right: -100%;
+  margin-left: -webkit-calc((400px + 1em));
+  margin-left: calc((400px + 1em));
+}
+
+/* line 34, ../sass/test.scss */
+.primary-sidebar {
+  background: green;
+  width: 400px;
+  float: left;
+  margin-right: -100%;
+  margin-left: 0;
+}
+
+/* line 39, ../sass/test.scss */
+.secondary-sidebar {
+  background: blue;
+  width: 300px;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+}

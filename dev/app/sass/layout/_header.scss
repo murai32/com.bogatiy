@@ -2,21 +2,29 @@
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
 
-@include show-template("images/bg_about_me.jpg", true);
+@include show-template("images/bg_about_me.jpg", false);
 
 .site-header{	
-	@include get-grid('base', true);
+	@include get-grid('base', false);
 
 	&__logo{
 		@include grid-span(2, 1);
 	}
 	&__main-navigation{
-		@include grid-span(2, 7)
+		@include grid-span(3, 6)
 	}
 	&__social-links{
-		@include grid-span(2, 7)
-		background: orange;
-		display: none;
+		@include grid-span(3, 6)
+		&::before{
+			content: '';
+			display: block;
+			height: .8em;
+			width: 1.9em;
+			border-left: 1px solid #222;
+			border-bottom: 1px solid #222;
+			float: left;
+			margin-top: 5.3em;
+		}
 	}
 }
 
@@ -36,30 +44,57 @@
 		line-height: .9;		
 	}
 	&__description{
-    display: inline-block;
-    margin: 4.56em 0 0 .2em;
-    line-height: 1.15;			
+		display: inline-block;
+		margin: 4.56em 0 0 .2em;
+		line-height: 1.15;			
 		span{
 			&:first-child{
-		    padding: .5em .4em 0 .4em;
-		    box-shadow: 0.7rem 0 0 #222,-0.2rem 0 0 #222;		    
-		    z-index: 5;
+				padding: .5em .4em 0 .4em;
+				box-shadow: 0.7rem 0 0 #222,-0.2rem 0 0 #222;		    
+				z-index: 5;
 
 			}
-	  	padding: 0.4em;
+			padding: 0.4em;
 			text-decoration: none;
 			position: relative;
 			//background-color: $text-color;
 			background-color: $text-color;
 			color: #fff;
 			text-align: left;
-			font-family: AGaramond;
+			font-family: $font-body;
 			text-transform: none;
 			font-size: $font-size-s;
 			font-style: italic;
 			font-weight: 600;
 			box-shadow: 0.3rem 0 0 $text-color,-.2rem 0 0 $text-color;
 		}
+	}
+}
+
+.social-links{
+	margin-top: 6.4em;
+	float: right;
+	&__item{
+		display: inline-block;
+		float: left;
+		height: 2.2em;
+		width: 2.2em;
+		&:not(:last-child){
+			margin-right: .7em;
+		}
+		svg{
+			width: 2.2em;
+			height: 2.2em;
+			transition: .2s cubic-bezier(0.46,-1.59, 0.35, 3.13);
+			&:hover{
+				margin: -.4em 0 0 -.4em;
+				width: 3em;
+				height: 3em;
+				fill: $hover-color;
+				//filter:drop-shadow(0 8px 22px rgba(0,0,0,0.25)) drop-shadow( 0 10px 6px rgba(0,0,0,0.22) );
+			}
+		}
+
 	}
 }
 
