@@ -21,78 +21,46 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-<!--  
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bogatiy-pavel-portfolio' ); ?></a>
-
--->
-
-
-
-
-
 <header class="site-header">
 	<div class="site-header__logo header-logo">
 		<?php	//$blogname = get_bloginfo( 'name' );?>
-
-		<a  class="header-logo__name" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<?php	//echo substr($blogname, 0, 5)?> 
-			Pavel
-			<br> 
-			Bogatiy
-			<?php	//echo substr($blogname, 5, 13)?>			
-		</a>
-
+		<div class="header-logo__name">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+				<?php	//echo substr($blogname, 0, 5)?> 
+				Pavel
+				<br> 
+				Bogatiy
+				<?php	//echo substr($blogname, 5, 13)?>			
+			</a>
+		</div>
 		<?php	//$description = get_bloginfo( 'description' );?>
 		<div class="header-logo__description">
-				<span>
-					<?php /*
-					* подключить если захочу кастомизированный вывод лого из админки
-					*echo substr($description, 0, 21)
-					*/?> 
-					UI & UX designer<br>
-					<?php // echo substr($description, 21, 40)?>
+			<span>
+					<?php echo get_option( 'header_options' )['logo_desc_1'] ?><br>
 				</span>				
-				<span>					 
-					and sometimes Web developer
-					<?php // echo substr($description, 21, 40)?>
+				<span>	
+					<?php echo get_option( 'header_options' )['logo_desc_2'] ?>
 				</span>
-			</div>				 
-		</div>
-		<div class="site-header__main-navigation">
-			<nav class="site-header__main-menu" role="navigation">
-<?php 
-//wp_nav_menu( array( 'theme_location' => 'main', 'menu_class' => 'main-menu' ) ); 
-?> 
-
-		<?php 
-		///bem_menu('main', 'main-menu', 'my-menu_my-modifier');  с модификатором
-		bem_menu_bogatiy_main('main', 'main-menu'); 
-		?>
-		
-
-
-			</nav>
-		</div>
-		<div class="site-header__social-links">
+		</div>				 
+	</div>
+	<!-- #site-navigation -->
+	<div class="site-header__main-navigation">
+		<nav class="site-header__main-menu" role="navigation">
 				<?php 
-				/*wp_nav_menu( array( 'theme_location' => 'socials-links', 'menu_class' => 'social-links-menu' ) );*/
-				bem_menu_bogatiy_main('socials-links', 'social-links');  
-				?>
-		</div> 
+				//wp_nav_menu( array( 'theme_location' => 'main', 'menu_class' => 'main-menu' ) ); 
+				?> 
 
-
-
-
-
-
-
-		<!-- #site-navigation -->
-
-	</header>
-	<!-- #masthead -->
-
-
-
-	<div class="site-content">
+				<?php 
+				///bem_menu('main', 'main-menu', 'my-menu_my-modifier');  с модификатором
+				bem_menu_bogatiy_main('main', 'main-menu'); 
+				?>				
+		</nav>
+	</div>
+	<div class="site-header__social-links">
+			<?php 
+			/*wp_nav_menu( array( 'theme_location' => 'socials-links', 'menu_class' => 'social-links-menu' ) );*/
+			bem_menu_bogatiy_main('socials-links', 'social-links');  
+			?>
+	</div> 
+</header>
+<div class="site-content"><!-- #content -->

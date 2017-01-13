@@ -1,0 +1,37 @@
+/*! Blocks-typography  */
+
+// Typography for general blocks elements
+
+.block-heading{	
+	// height: 3*$rtm;
+/* 	font-family: $font-display;
+	font-size: $font-size-m; */
+	text-transform: uppercase;
+	// line-height: 3;
+	letter-spacing: .1em;
+	@include vr($font-display, $font-size-m);
+	// position: relative;
+	padding-top: 1.5*$rtm;
+
+	&:before{
+		content: '';
+		display: block;
+		height: .5*$rtm;
+		width: 100%;
+		position: absolute;
+		border-bottom: 1px solid #222;
+		top:.25*$rtm;
+	}
+	&:after{
+		content: '';
+		display: block;
+		height: .5*$rtm;
+		width: .5*$rtm;
+		background-color: #222;
+		position: absolute;
+		top:.25*$rtm;
+		right: 0;
+	}
+}
+
+/*! END Blocks-typography  */

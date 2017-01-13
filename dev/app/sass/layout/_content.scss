@@ -1,0 +1,35 @@
+/*! Content  */
+
+.site-content{
+	@include get-grid('base', false);
+	
+	margin-bottom: 4*$rtm;
+	@include clearfix;
+	// Глобальный настройки вывода контента страницы: site-content && aside
+	&__main{
+		@include grid-span(8, 1);
+
+		&_page-about{
+				// @include layout(){
+				// example of overriding context
+				// @include grid-span(8, 1)
+			}
+		}
+		&__aside{
+			//@include grid-span(3, 1)
+	}
+}
+
+// подключаем стили страниц
+@import
+  'pages/_page-about.scss',
+  'pages/_page-portfolio.scss';
+
+// подключаем шорткоды
+@include layout(5){
+	@import
+		'shortcodes/_skils-sliders-addable.scss',
+		'shortcodes/_heading-text-box.scss';	
+}
+
+/*! END Content  */

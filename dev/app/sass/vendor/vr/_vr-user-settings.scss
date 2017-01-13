@@ -22,7 +22,8 @@ $base-line-height:				($px-line-height / $px-font-size); // ! Don't change this!
 $rhythm:						($base-font-size * $base-line-height); // ! Don't change this!
 // ! ----------
 
-$header-trailer:				$rhythm * -2;
+// $header-trailer:				$rhythm * -2; была какая-то шляпа, отключил
+$header-trailer:				$rhythm;
 $paragraph-trailer:				$rhythm * 1;
 
 // Modular scale - see <_vr-calc-font-sizes.scss> for all preset scales
@@ -48,14 +49,14 @@ $border-radius-m:				0.25rem;
 $border-radius-l:				0.5rem;
 
 // VR buttons
-$include-vr-buttons:			true;
+$include-vr-buttons:			false;
 
 $vr-btn-border-width:			$border-width-m;
 $vr-btn-padding-x:				$distance-l; // Padding right, left.
 $vr-btn-padding-y:				$distance-m; // Padding top, bottom.
 
 // VR forms
-$include-vr-forms:				true;
+$include-vr-forms:				false;
 
 $vr-form-label-trailer:			$distance-m;
 

@@ -1,0 +1,266 @@
+
+/*! Content page-about */
+
+@include layout(){
+	.page-portfolio{
+		margin-top: 6*$rtm;
+		&__filter{
+			@include grid-span(2, 1);
+
+			.portfolio-filter{	
+				&__heading{
+					@extend .block-heading;
+				}
+				&__show-all{
+					border: 0;
+					padding: 0;
+					background-color: transparent;
+
+					@include vr($font-display, $font-size-s);
+					float:right;
+					// margin-left: .5*$rtm;
+					margin-top: 1*$rtm;
+					color: $violet-color;
+					cursor: pointer;@include hover-transition; 
+					&:hover{
+						color: $blue-color;
+						&::after{							
+							border-bottom: 1px dotted $blue-color;
+						}						
+					}
+					&:focus{
+						outline-color: transparent;
+					}
+					&::after{
+						content:'';
+						display: inline-block;
+						border-bottom: 1px dotted $violet-color;
+						position: absolute;
+						left: 0;
+						bottom: .125* $rtm;
+						width: 100%;
+					}
+				}
+				&__controls{
+					margin-top: 1.5* $rtm;
+					/* checkbox aspect */
+					[type="checkbox"]:not(:checked) + label:before,
+					[type="checkbox"]:checked + label:before {
+						position: absolute;
+						left: initial;
+						right:0 !important; 
+						top: $rtm/6;
+
+					}
+					/* checked mark aspect */
+					[type="checkbox"]:not(:checked) + label:after,
+					[type="checkbox"]:checked + label:after {			
+						position: absolute;
+						left: initial;
+						right: -2px !important;
+						top: $rtm/6;
+						transition: all .2s;
+					}
+				}
+				&__label{
+					font-style: italic;
+					@include vr($font-display, $font-size-xs);
+				}
+				&__checkbox{
+					@include vr($font-body, $font-size-s);
+					display: inline-block;
+					width: 8*$rtm;
+					font-size: $font-size-s;
+					padding-left: .5*$rtm;
+					font-style: italic;
+					font-weight: bold;
+					user-select: none;
+				}
+				&__mark{
+					height: .5*$rtm;
+					border-left: 3px solid $text-color;
+					display: inline-block;
+					position: absolute;
+					left:0;
+					top:$rtm/6;
+				}
+			}
+		}
+		&__works{
+			@include grid-span(5, 3);
+		}
+	}
+
+	.portfolio-works{
+		@include layout(3){
+			$portfolio-bd: 1px solid $text-color;
+
+			&__item{
+				@include float-span(1, $gutter: 0);
+			}
+		}
+	}
+
+	.portfolio-item{
+		height: 10*$rtm;
+		position: relative;
+		background: linear-gradient(135deg, #ae0cea -2%, #5d54f4 54%, #05a4ff 96%);	
+		overflow: hidden;
+
+		$item-border: 1px solid $text-color;
+
+		border:$item-border;
+		border-right: none;
+		border-bottom: none;
+
+		&:nth-child(3n), &:last-child{
+			border-right: $item-border;
+		}
+		&:nth-last-child(-n+3){
+			border-bottom: $item-border;						
+		}
+
+		&__bg-img{ 
+			display: block;
+			width: auto;
+			height: calc(100% + 1px);
+			background-size: cover;
+			transition: all .35s cubic-bezier(0.25, 0.25, 0.13, 0.99);
+		}
+		&:hover &__bg-img{
+			// border-radius: 100%;
+			transform: translate(2%,3%) scale(1.1) rotateZ(-.8deg);		
+			opacity: .2;		
+		}			
+		&__link{
+			display:block;
+			width: 100%;
+			height: 100%;
+			color: $text-color-invert;
+			position: absolute;
+			top: 0;	
+			opacity: 0;
+			transition: all .3s cubic-bezier(0.25, 0.25, 0.13, 0.99);
+			transform: scale(.8);
+		}	
+		&:hover &__link{
+			opacity: 1;
+			transform: scale(1);
+		}
+		&__btn{
+			display: none;
+			position: absolute;
+			top: 45%;
+			left: 50%;
+			transform: translate(-50%,-45%);
+			border: 1px solid $text-color-invert;
+			padding: .3*$rtm .6*$rtm .2*$rtm .6*$rtm;
+			// background-color: #fff;
+			// color: $text-color;
+			font-family: $font-display;
+			font-weight: 400;
+			text-transform: uppercase;
+			line-height: .5*$rtm;
+			opacity: 1;
+			&:hover{
+				color: $blue-color;
+				background-color: $text-color-invert;
+				transition: all .6s cubic-bezier(0.25, 0.25, 0.13, 0.99);
+			}
+		}
+		&__desc{
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-15%);
+			list-style: none;
+			padding: 0;
+			text-align: center;
+			width: 90%;
+			// padding: 0 .5*$rtm .5*$rtm .5*$rtm;
+		}
+		/* 		&__desc{
+			display: block;
+			position: absolute;
+			bottom: 0;
+			top: initial;
+			list-style: none;
+			padding: 0 .5*$rtm .5*$rtm .5*$rtm;
+			} */
+			&__name{
+				text-transform: uppercase;
+				font-family: $font-display;
+				font-size: .55*$rtm;
+				line-height: .75*$rtm;
+				letter-spacing: .06em;
+			}		
+/* 		&__name{
+			text-transform: uppercase;
+			font-family: $font-display;
+			font-weight: 400;
+			font-size: .55*$rtm;
+			line-height: .75*$rtm;
+			} */
+			&__tags{
+				display: none;
+				font-family: $font-body;
+				font-style: italic;
+				line-height: .8*$rtm;
+			}
+		}
+
+
+/* 	.portfolio-item-description{
+		display: block;
+		position: relative;
+		height: 100%;
+		padding: .5*$rtm;	 		
+		color: $text-color-invert;
+		text-decoration: none;
+		
+		&__info{
+			padding: 0;
+			list-style: none;
+			bottom: -.25*$rtm;
+			position: absolute;
+			display: block;
+			top: initial;
+		}
+		&__wrapper{
+			position: relative;
+			height: inherit;
+			overflow: hidden;
+		}
+		&__btn{
+			display: block;		
+			width: 3*$rtm;
+			height: $rtm;
+			position: absolute;
+			border: 1px solid $text-color-invert;
+			font-family: $font-display;
+			font-weight: bold;
+			text-transform: uppercase; 
+			text-align: center; 
+
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+		&__titel{
+			font-family: $font-display;
+			font-weight: 200;
+			text-transform: uppercase;
+			font-size: $font-size-s;
+		}
+		&__tags{
+			font-family: $font-body;
+			font-weight: bold;
+			font-style: italic;
+			font-size: $font-size-s;
+		}
+		} */
+
+	}
+
+	/*! END Content page-about */

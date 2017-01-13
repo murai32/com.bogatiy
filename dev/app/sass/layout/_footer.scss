@@ -1,3 +1,127 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the footer of the site/application.
-// -----------------------------------------------------------------------------
+/*! Footer */
+
+footer{
+	display: block;
+	width: 100%;
+	position: relative;	
+	float: left;
+	background: linear-gradient(125deg, $main-gradient);
+}
+
+.site-footer{
+	@include get-grid('base', false);
+
+	//height: 6*$rtm;
+	margin-top: 5*$rtm;
+	margin-bottom: 1.5*$rtm;
+	border-bottom: 1px solid #fff;	
+	@include clearfix;
+
+	/* Footer hatch */
+	@mixin footer-hatch-style{
+		content:'';
+		display: block;
+		position: absolute;
+		border-left: 1px solid #fff;
+		height: 1*$rtm;
+		bottom: 0;		
+	}
+	@mixin footer-hatch ($hatch-position: 'before'){
+		@if $hatch-position == 'before' {
+			&::before{
+				@include footer-hatch-style;
+				left: 0;
+			}
+		} 
+		@else if $hatch-position == 'after'{
+			&::after{
+				@include footer-hatch-style;
+				right: 0;
+			}
+		}		
+	}
+	/* END Footer hatch */
+	
+	&__name{
+		@include grid-span(2,1);
+
+		position: relative;
+		padding: 0 0 .5*$rtm 2*$rtm;
+		span{		
+			position: absolute;
+			top: -$rtm;
+			left: $rtm;		
+			text-transform: uppercase;
+			font-family: $font-display;
+			font-weight: 600;
+			color: $text-color-invert;
+			line-height: .5*$rtm;
+		}
+
+		@include footer-hatch('before');
+	}
+	&__email{
+		@include grid-span(5,3);
+
+		position: relative;
+		padding: 0 0 .5*$rtm 2*$rtm;
+
+		span{		
+			position: absolute;
+			top: -$rtm;	
+			left: $rtm;	
+			text-transform: uppercase;
+			font-family: $font-display;
+			font-weight: 600;
+			color: $text-color-invert;
+			line-height: .5*$rtm;
+		}
+
+		@include footer-hatch('after');
+		@include footer-hatch('before');
+	}
+	&__social-links{
+		@include grid-span(1,8);
+		position: relative;
+		// padding: 0 0 .5*$rtm 2*$rtm;
+		padding: 0 0 .5*$rtm 0;
+
+		@include footer-hatch('after');
+
+		.social-links{
+			$item-height: 1.4*$rtm;
+			$item-width: $item-height;
+			$item-margin: .4rem;
+
+			height: auto;
+			position: absolute;
+			top: -2*$rtm;
+			left: -1rem;
+			// margin: 0 auto;
+			//margin-left: 2*$rtm;
+			//width: $item-width*3+$item-margin*2;
+			@include clearfix;
+
+
+			&__item{
+				width: $item-width;
+				height: $item-height;
+				&:not(:last-child){
+					margin-right: $item-margin;
+				}
+				svg{
+					fill: #fff;
+					width: $item-width;
+					height: $item-height;
+					&:hover{
+				    margin: -.1rem 0 0 -0.15rem;
+				    width: 2.4rem;
+				    height: 2.4rem;
+					}
+				}
+			}			
+		}
+	}
+}
+
+/*! END Footer */

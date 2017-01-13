@@ -1,0 +1,88 @@
+/*! Content skils-sliders-addable */
+
+.textbox-heading {
+		// background-color: red;
+		width: 100%;
+		overflow: hidden;
+
+		&__heading{
+			@include grid-span(2,1);			
+			@extend .block-heading;
+		}
+		&__textbox{
+			@include grid-span(3,3);
+		}
+	}
+
+	.skills-sliders{
+		@extend .textbox-heading;
+
+		&__heading{
+			@extend .textbox-heading__heading;
+		}
+		&__item{
+			@extend .textbox-heading__textbox;
+			//margin-bottom: $rtm;
+		}		
+	}
+	
+	.skill-item{
+		&__label{
+
+		}
+		&__number{
+			// display: block;
+			// font-family: $font-display;
+			// font-size: $font-size-xs;
+			font-style: italic;
+			font-weight: 600;
+			// background-color: red;
+			// height: .5*$rtm;
+		}
+		&__name{
+			// display: block;
+			// font-family: $font-body;
+			// font-size: $font-size-s;
+			// font-weight: 600;
+			// background-color: rgba(0, 0, 255, 0.38);
+			// height: $rtm;
+
+		}
+		&__slider{
+			
+			p{
+				width: 100%;
+				text-align: center;
+				font-family: $font-display;
+				font-size: $font-size-s;
+				margin-top: -.5*$rtm;
+				margin-bottom: .5*$rtm;
+				&::before{
+					content:'';
+					display: block;
+					position: absolute;
+					width: inherit;
+					bottom: -.3rem;
+					border-bottom: 2px solid $grey-color;
+				}
+			}
+			span{
+				display: block;
+				border-bottom: 2px solid $text-color;
+				position: absolute;
+				top: 0;
+				bottom: -.3rem;
+			}
+		}
+		&__comment{
+			// display: none;
+			// margin-top: .5*$rtm;
+			font-style: italic;
+			padding-bottom: .5*$rtm;
+		}
+		& p:not(&__comment){
+			padding-bottom: 0;
+		}
+	}	
+
+/*! END Content skils-sliders-addable */

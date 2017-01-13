@@ -73,6 +73,26 @@ endif;
 add_action( 'after_setup_theme', 'bogatiy_pavel_portfolio_setup' );
 
 /**
+*	Beautiful vardump
+*/
+
+function vardump($var) {
+      echo '<pre>';
+      var_dump($var);
+      echo '</pre>';
+}
+
+/**
+*Enable SVG images in media uploader
+*/
+function cc_mime_types( $mimes ){
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'cc_mime_types' );
+
+
+/**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
  * Priority 0 to make it available to lower priority callbacks.
@@ -94,6 +114,15 @@ function bogatiy_pavel_portfolio_remove_admin_bar() {
 add_action('after_setup_theme', 'bogatiy_pavel_portfolio_remove_admin_bar');
 
 /**
+ * Register post types.
+ *
+ * @link http://wp-kama.ru/function/register_post_type
+ */
+
+require get_template_directory() . "/inc/register-post-types.php";
+
+
+/**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
@@ -110,6 +139,37 @@ function bogatiy_pavel_portfolio_widgets_init() {
 		) );
 }
 add_action( 'widgets_init', 'bogatiy_pavel_portfolio_widgets_init' );
+
+
+// Регистрирую виджет для вывода информации в футере
+function footer_widgets_init() {
+	register_sidebar( array(
+		'name'          => 'Footer',
+		'id'            => 'footer_info',
+		'before_widget' => "<section class='my-footer'>",
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+		) );
+}
+add_action ('widgets_init', 'footer_widgets_init');
+
+require get_template_directory() . '/lib/plugins/Custom_widgets/my_widget.php';
+
+/**
+* Add admin menus
+* reference: https://codex.wordpress.org/Adding_Administration_Menus
+**/
+
+// Hook for adding admin menus
+// add_action('admin_menu', 'add_theme_settings_section');
+
+// Require file where magic starts
+// require get_template_directory() . '/lib/plugins/Custom_inputs_page/theme_settings.php';
+
+require get_template_directory() . "/lib/plugins/Custom_inputs_page/theme_settings_admin_section.php";
+
+
 
 /**
  * Enqueue scripts and styles.

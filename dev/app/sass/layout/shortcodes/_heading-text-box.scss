@@ -1,0 +1,35 @@
+	.textbox-heading {
+		// background-color: red;
+		width: 100%;
+		overflow: hidden;
+
+		&__heading{
+			@include grid-span(2,1);
+
+			font-family: $font-display;
+			font-size: $font-size-m;
+			text-transform: uppercase;
+			position: relative;
+
+			&:before{
+				content: '';
+				display: block;
+				height: .5*$rtm;
+				width: 100%;
+				border-bottom: 1px solid #222;
+			}
+			&:after{
+				content: '';
+				display: block;
+				height: .5*$rtm;
+				width: .5*$rtm;
+				background-color: #222;
+				position: absolute;
+				top:0;
+				right: 0;
+			}
+		}
+		&__textbox{
+			@include grid-span(3,3);
+		}
+	}

@@ -7,7 +7,8 @@ uglify = require('gulp-uglifyjs'),
 autoprefixer = require('gulp-autoprefixer'),
 del =  require('del'),
 notify = require('gulp-notify'),
-svgmin = require('gulp-svgmin');
+svgmin = require('gulp-svgmin'),
+replace = require('gulp-replace');
 
 
 gulp.task('fonts', function(){
@@ -17,17 +18,18 @@ gulp.task('fonts', function(){
 })
 
 gulp.task('svg', function(){
-	gulp.src('app/images/svg/**/*.svg')
-	.pipe(svgmin())
-	.pipe(gulp.dest('./app/images/svg/'));
+	gulp.src('app/images/svg/*.svg')
+	// .pipe(svgmin())
+	//.pipe(replace('id', 'class'))	
+	.pipe(gulp.dest('../images/svg/'));
 })
 
-gulp.task('images', /*['svg'],*/ function(){
+gulp.task('images', ['svg'], function(){
 	//
 	//	!!!! подключить оптимизацаю SVG и ужимку картинок!!
 	//
 	//del.sync(['../images/**/*', , '!../images'], {force: true});
-	gulp.src('app/images/**')
+	gulp.src('app/images/*')
 	.pipe(gulp.dest('../images/'))
 })
 
@@ -46,9 +48,9 @@ gulp.task('sass', ['fonts', 'images'], function(){
 	})
 	)
 	.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-	.pipe(minifyCss({
-						keepSpecialComments: 1 // минифицирукм CSS с сохранение важных комментов
-					}))					
+	// .pipe(minifyCss({
+	// 					keepSpecialComments: 1 // минифицирукм CSS с сохранение важных комментов
+	// 				}))					
 					.pipe(gulp.dest('../')) // сохраняем CSS  в конечный каталог 
 					.pipe(browserSync.reload({stream: true}))
 
@@ -59,10 +61,18 @@ gulp.task('scripts', function(){
 
 	//собираем библиотеки, ужимаем и инсталируем в тему
 	gulp.src([
-		'app/libs/jquery/dist/jquery.js'
+		'app/libs/jquery/dist/jquery.js',
+		'app/libs/js-cookie/src/js.cookie.js'
 		])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
+	.on("error", notify.onError({ // отлавливаем ошибку и выводим сообщение о ней в toaster винды
+		message: "Error: <%= error.message %>",
+		title: "Style",
+		sound: true,
+		wait: true
+	})
+	)
 	.pipe(gulp.dest('../js/'));
 
 	//ужимаем commonjs и инсталируем в тему

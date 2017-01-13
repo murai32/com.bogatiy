@@ -4,8 +4,6 @@
 
 
 
-
-
 /// Regular font family
 /// @type List
 //$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
@@ -20,9 +18,17 @@
 
 /// Copy text color
 /// @type Color
-$text-color: #222 !default;
-$hover-color: #a319d6 !default;
+$violet-color: #ae0cea !default;
+$blue-color: #05a4ff !default;
 
+$text-color: #222 !default;
+$text-color-invert: #fff !default;
+$hover-color: $violet-color;
+$grey-color: #cdcdcd !default;
+
+
+
+$main-gradient: rgb(174,12,234) 0%,rgb(93,84,244) 75%,rgb(5,164,255) 90%;
 /// Main brand color
 /// @type Color
 //$brand-color: rgb(229, 0, 80) !default;
@@ -46,7 +52,7 @@ $hover-color: #a319d6 !default;
 /// Container's maximum width
 /// @type Length
 //$max-width: 1180px !default;
-$max-width-desktop: 74em;
+$max-width-desktop: 74rem;
 
 
 /// Breakpoints map

@@ -50,26 +50,6 @@
   }
 }
 
-
-/// Show singularity grid 
-@mixin show-sgs-grid ($grid-opacity){
-  @include sgs-change('debug' , true);
-  &::before{
-    content: ' ';
-    display: block;
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    @include background-grid($color: blue);
-    opacity: $grid-opacity;
-  }
-}
-
-/// Give max-width with justify - center
-@mixin get-desktop-width($justify : false) {
-  max-width: $max-width-desktop; // решить что то с брейкпойнтами!
-  position: relative;
-  @if $justify == 'center'{
-    margin: 0 auto;
-  }
+@mixin hover-transition($duration : 1s){
+  transition:color $duration cubic-bezier(0, 2.95, 0.34, 0.15);   
 }

@@ -1,0 +1,142 @@
+/*! Content page-about */
+
+@include layout(){
+	.page-about{
+		&-content{
+			@include grid-span(5,1);
+
+			margin-top: 7*$rtm;
+		}
+		&-aside{
+			@include grid-span(3, 6)
+
+			&__photo{
+				height: 15 * $rtm;
+				margin-top: -4*$rtm;	// clear: right;	
+
+				svg{
+					// background-color: red;
+					height:100%;
+					#owner-img{
+
+					}
+					#mask-circles, #mask-circles-invert{
+						rect:nth-child(2){
+							height: 3.5*$rtm;
+							y: 16*$rtm;
+						}
+					}
+
+					/* Не работают свойства X и Y для элемента маски!!
+					>#img-patch-indent{
+						//x: 3.5*$rtm !important;
+						}*/
+				}
+			}
+			&__portfolio-link{
+				clear: both;
+				margin-top: $rtm*2.5;
+				height: 2*$rtm;
+				a{
+					line-height: 1.05;
+				// margin-top: .5*$rtm;
+				display: inline-block;
+				position: relative;
+				float: right;
+				font-family: $font-display;
+				text-decoration: none;
+				color: $text-color;
+				font-size: $font-size-m;
+				@include hover-transition; 	
+				@keyframes arrow-shake {
+					0% { transform: translate(0,0)  rotateX(0deg)}
+					45% { transform: translate(-.2em,0) rotateX(0deg)}
+					45% { transform: translate(.8em,0) rotateX(30deg)}
+					85% { transform: translate(-.2em,0) rotateX(10deg)}
+					100% { transform: translateX(0)  rotateX(0deg)}
+				}
+				svg{
+					// display: none;
+					height: $rtm *2;
+					float: right;
+					margin: 0 0 0 $rtm;
+					.arrrow{
+						@include hover-transition(.6s);
+				    	stroke: $text-color; 		
+					}
+				}
+				&:hover{
+					svg{
+				    // animation: arrow-shake 4s infinite cubic-bezier(0.42, 0.46, 0.37, 0.95);
+				    animation: arrow-shake .8s alternate-reverse cubic-bezier(0.22, 0.61, 0.36, 1);
+				    // transform: translate(-3em,3em) rotateZ(180deg);
+				    .arrrow{
+				    	stroke: $hover-color;
+				    }
+				  }
+				}
+				}
+			}
+			&__download-cv{
+				clear:right;
+				margin-top: 5*$rtm;
+				font-family: $font-body;
+				font-style: italic;
+				font-weight: 600;
+				height: 1.5* $rtm;
+
+				&::before{
+					content:'';
+					display: inline-block;
+					height: 1.5* $rtm;
+					width: .5 * $rtm;
+					border-left: 1px solid $text-color;
+					border-top: 1px solid $text-color;
+				}
+				a{
+					display: inline-block;
+					position: relative;
+					vertical-align: top;
+					line-height: 1.5* $rtm;
+					color: $text-color;
+					text-decoration: none;
+					@include hover-transition; 
+					&:hover{
+						color: $hover-color;
+						svg{
+							background-color: #fff;
+							#BG{
+								y: 0;
+								transform: rotate(0deg);
+								transition: 1s cubic-bezier(0, 2.95, 0.34, 0.15);
+							}
+						}
+					}
+					span{
+						vertical-align: middle;
+					}
+					svg{
+						position: absolute;
+						height: 1.5* $rtm;
+						margin-left: .5*$rtm;
+						top: 0;
+						right: -2*$rtm;
+						background-color: #222;
+
+						#Arrow, #Line{
+							fill: #fff;
+						}
+						#BG{
+							fill: url("#dwnld_grad");
+							transform: rotate(45deg);
+							y: -2.5*$rtm;
+							transition: .3s cubic-bezier(0.4, 0, 1, 1);
+						} 
+					}
+				}
+			}
+		}
+	}
+}
+
+/*! END Content page-about */

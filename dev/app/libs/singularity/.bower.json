@@ -1,6 +1,6 @@
 {
   "name": "singularity",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "main": "stylesheets/_singularitygs.scss",
   "ignore": [
     "**/.*",
@@ -21,14 +21,13 @@
     "breakpoint-sass": ">=2.4.0"
   },
   "homepage": "https://github.com/Team-Sass/Singularity",
-  "_release": "1.7.0",
+  "_release": "1.7.1",
   "_resolution": {
     "type": "version",
-    "tag": "v1.7.0",
-    "commit": "bafe5e36cda4170a849d3a1cf6bb171d09048f77"
+    "tag": "v1.7.1",
+    "commit": "98461c05244d4b1178394c99ce835eceae6771ae"
   },
   "_source": "https://github.com/Team-Sass/Singularity.git",
   "_target": "^1.7.0",
-  "_originalSource": "singularity",
-  "_direct": true
+  "_originalSource": "singularity"
 }
