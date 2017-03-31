@@ -1,0 +1,153 @@
+/*! Forms  */
+
+
+@include layout(8){
+	.contact-form{
+		&__heading{
+			@include grid-span(3,1);
+
+			font-family: $font-display;
+			font-size: $font-size-m;
+			text-transform: uppercase;
+			position: relative;
+			letter-spacing: .1em;
+
+			&:before{
+				content: '';
+				display: block;
+				height: .5*$rtm;
+				width: 100%;
+				border-bottom: 1px solid #222;
+			}
+			&:after{
+				content: '';
+				display: block;
+				height: .5*$rtm;
+				width: .5*$rtm;
+				background-color: #222;
+				position: absolute;
+				top:0;
+				right: 0;
+			}
+		}
+
+		&__form{			
+			@include grid-span(5,4);
+
+
+
+		}
+		&__item{
+			@include clearfix;
+			margin-bottom: 1.5*$rtm;
+
+		}
+		&__submit-btn{
+			border: none;
+			background-color: $text-color;
+			@include vr($font-display, $font-size-m);
+			top:inherit;
+			color: $text-color-invert;
+			height: 2*$rtm;
+			padding: 0 1*$rtm 0 1*$rtm;
+			font-weight: 200;
+			cursor: pointer;
+
+			&:hover{
+				background-color: $violet-color;
+				@include hover-transition(1.5s);
+			}
+			&:focus{
+				outline: none;
+			}
+			
+		}
+
+
+
+
+
+		.field_theme{
+			border: none;
+			@include vr($font-display, $font-size-s);	
+			color: $violet-color;		
+			top: 0;
+			margin-bottom: .5*$rtm;
+			margin-top: .5*$rtm;
+			resize: none;
+			background-position: 0 1*$rtm !important;
+			display: block;
+			letter-spacing: .1rem;
+
+			&:focus{
+				outline: none;
+				border-color: $blue-color;
+			}
+		}
+		
+		@include layout(4){
+			.field-text, .field-textarea{
+
+				&__label{
+					display: block;
+					@include vr($font-body, $font-size-s);
+					font-weight: 600;
+
+				}
+				&__input-required{
+					font-size: inherit;					
+					@include vr($font-display, $font-size-xs);
+					vertical-align: inherit;					
+					font-style: italic;
+				}
+				&__info{
+					clear: both;				
+					p{
+						padding-bottom: 0;					
+					}
+				}
+
+				&__input{
+					@include clearfix;
+					position: relative;
+
+					&::before{
+						content: '';
+						display: block;
+						position: absolute;
+						width: 100%;
+						height: .5*$rtm;
+						top: -1px;						
+						border-top: solid 1px $text-color;
+						border-right: solid 1px $text-color;
+
+					}			
+					
+					&_textarea{						
+						@include grid-span(4,1);
+						textarea{
+							width: 100%;
+							height: 7*$rtm;
+						}
+					}
+					&_text{								
+						@include grid-span(4,1);
+						input{							
+							width: 100%;			
+							height: 1*$rtm;
+							background-repeat-y: no-repeat;
+						}
+					}
+				}		
+			}
+		}
+
+
+
+
+
+
+
+	}
+}
+/*! END Forms  */

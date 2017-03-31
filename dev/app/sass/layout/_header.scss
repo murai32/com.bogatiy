@@ -5,78 +5,123 @@
 	@include get-grid('base', false);
 
 	&__logo{
-		@include grid-span(2, 1);
-	}
-	&__main-navigation{
-		@include grid-span(3, 6)
-	}
-	&__social-links{
-		@include grid-span(3, 6);
-		clear: right;
-		&::before{
-			content: '';
-			display: block;
-			height: .5*$rtm;
-			width: 1.9em;
-			border-left: 1px solid #222;
-			border-bottom: 1px solid #222;
-			float: left;
-			margin-top: 3.5*$rtm;
+		@include grid-span(3, 1);
+	}	
+	/* &__logo_template_portfolio-item{
+		@include grid-span(1, 1);
+		} */
+		&__main-navigation{
+			@include grid-span(3, 6)
 		}
-		.social-links{	
+		&__social-links{
+			@include grid-span(3, 6);
+			clear: right;	
 			margin-top: 4*$rtm;
-			float: right;
+			position: relative;
+			&::before{
+				content: '';
+				display: block;
+				height: .5*$rtm;
+				width: 1.9em;
+				border-left: 1px solid #222;
+				border-bottom: 1px solid #222;
+				position: absolute;
+				top: -.5*$rtm;
+			}
+			.social-links{
+				float: right;
+			}
+
+			&_template_portfolio-item{				
+				margin-top: 2.5*$rtm;
+				&::before{
+					display: none !important;				
+				}
+			}
 		}
 	}
-}
 
 
-.header-logo{
-	&__name{
-		width: 7.5*$rtm;
-		height: 3*$rtm;		
-		margin-top: $rtm*3.5;
-		transform: rotate(-90deg)  translateX(-$rtm*7.5);
-		transform-origin: left top;
-		a{
-			text-decoration: none;
-			letter-spacing: .06em;
-		//font-size: $font-size-l;
-		font-size: 2.4em;
-		color: $text-color;
-		font-family: $font-display;
-		text-transform: uppercase;
-		line-height: .8;
-	}		
-}
-&__description{
-	display: inline-block;
-	margin: 5*$rtm 0 0 0;
-	padding: .25*$rtm 0; 
-	line-height: 1.15;
-	overflow: hidden;			
-	span{
-		&:first-child{
-			padding: .5em .4em 0 .4em;
-			box-shadow: 0.7rem 0 0 #222,-0.2rem 0 0 #222;		    
-			z-index: 5;
+	.header-logo{
+		&__name{
+			width: 7.5*$rtm;
+			height: 3*$rtm;		
+			margin-top: $rtm*3.5;
+			transform: rotate(-90deg)  translateX(-$rtm*7.5);
+			transform-origin: left top;
+
+			a{
+				text-decoration: none;
+				letter-spacing: .06em;
+				font-size: 2.4em;
+				color: $text-color;
+				font-family: $font-display;
+				text-transform: uppercase;
+				line-height: .8;
+			}		
+
+			&_template_portfolio-item{
+				width: 7.5*$rtm;
+				height: 3*$rtm;		
+				margin-top: 0;
+
+				a{
+					font-size: 2em;
+				}
+			}
+
 
 		}
-		padding: 0.4em;
-		text-decoration: none;
-		position: relative;
-			//background-color: $text-color;
-			background-color: $text-color;
-			color: #fff;
-			text-align: left;
-			font-family: $font-body;
-			text-transform: none;
-			font-size: $font-size-s;
-			font-style: italic;
-			font-weight: 600;
-			box-shadow: 0.3rem 0 0 $text-color,-.2rem 0 0 $text-color;
+		&__description{
+			margin: 5*$rtm+.25 0 0 0;
+/* 			padding: .25*$rtm 0; 
+			line-height: 1.15;
+			overflow: hidden;		 */	
+			span{
+				@include vr($font-body, $font-size-s);
+				display: inline-block;
+				background-color: $text-color;
+				color: $text-color-invert;
+				// font-family: $font-body;
+				// font-size: $font-size-s;
+				font-style: italic;
+				font-weight: 600;
+				padding: 0 .4*$rtm 0 .4*$rtm;
+				line-height: $rtm;
+				float: left;
+				clear: left;
+				// box-sizing: content-box;
+				&:first-child{
+					z-index: 100;
+					position: relative;
+					padding-top: .125*$rtm;
+					// padding: .5em .4em 0 .4em;
+					// box-shadow: 0.7rem 0 0 #222,-0.2rem 0 0 #222;		    
+					// z-index: 5;
+				}
+				&:last-child{
+					margin-top: -.25*$rtm;
+					padding-top: .125*$rtm;
+				}
+				// padding: 0.4em;
+				// text-decoration: none;
+				// position: relative;
+				// //background-color: $text-color;
+				// background-color: $text-color;
+				// color: #fff;
+				// text-align: left;
+				// font-family: $font-body;
+				// text-transform: none;
+				// font-size: $font-size-s;
+				// font-style: italic;
+				// font-weight: 600;
+				// box-shadow: 0.3rem 0 0 $text-color,-.2rem 0 0 $text-color;
+			}
+
+			&_template_portfolio-item{
+				margin: 2.5*$rtm+.25 0 0 2.75*$rtm;				
+			}
 		}
 	}
-}
 
 /*! END Header  */

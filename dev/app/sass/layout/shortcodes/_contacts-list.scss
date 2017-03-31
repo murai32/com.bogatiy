@@ -1,0 +1,136 @@
+/* !Contact list */
+
+@include layout(8){
+	.contacts-list{
+		width: 100%;
+		margin-bottom: 4*$rtm;
+		&__heading{
+			@include grid-span(3,1);
+
+			font-family: $font-display;
+			font-size: $font-size-m;
+			text-transform: uppercase;
+			position: relative;
+			letter-spacing: .1em;
+
+			&:before{
+				content: '';
+				display: block;
+				height: .5*$rtm;
+				width: 100%;
+				border-bottom: 1px solid #222;
+			}
+			&:after{
+				content: '';
+				display: block;
+				height: .5*$rtm;
+				width: .5*$rtm;
+				background-color: #222;
+				position: absolute;
+				top:0;
+				right: 0;
+			}
+		}
+		&__list{
+			@include grid-span(5,4);
+			position: relative;
+
+			&::before{
+				// content:'';
+				height: $rtm;
+				width: .5*$rtm;
+				border-right: 1px solid #222;
+				border-top: 1px solid #222;
+				display: inline-block;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}			
+			&::after{
+				content:'';
+				// height: $rtm;
+				width: .5*$rtm;
+				// border-right: 1px solid #222;
+				border-bottom: 3px solid #222;
+				display: inline-block;
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+		}
+	}
+}
+
+@include layout(3){
+	.contact-item{
+		&:not(:last-child){
+			margin-bottom: 1.5*$rtm;
+		}
+		@include clearfix;
+
+		&__name{
+			font-weight: bold;
+		}
+		&__number{
+			font-style: italic;
+			font-weight: 600;
+		}
+		&__label{
+			@include grid-span(3,1);
+			clear: both;
+			// margin-bottom: .5*$rtm;
+			p{
+				padding: 0;
+			}
+		}
+		&__info{
+			@include grid-span(3,1);
+			clear: both;
+			&-email{
+				font-size: inherit;
+
+				a{
+					border-bottom: 1px dotted $violet-color !important;
+				}
+			}
+
+			&_net-contacts{
+				&_columns{
+					p{
+
+						// width: 26% !important;
+						display: inline-block !important;
+						margin-right: 0 !important;
+					}
+				}
+				p{
+					width: 33%;
+					margin-bottom: .5*$rtm !important;					
+				}	
+			}
+
+			p{
+				@include vr($font-body, $font-size-s);
+				font-family: $font-display;
+				font-weight: 400;
+
+				// font-size: $font-size-m;
+				a{
+					color: $violet-color;
+					text-decoration: none;
+					border-bottom: 1px solid $violet-color;
+					@include  hover-transition;
+
+					&:hover{
+						color: $blue-color !important;
+						border-color: $blue-color !important;
+					}
+				}
+
+			} 
+		}
+	}
+}
+
+
+/* !END Contact list */

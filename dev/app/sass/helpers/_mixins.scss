@@ -51,5 +51,5 @@
 }
 
 @mixin hover-transition($duration : 1s){
-  transition:color $duration cubic-bezier(0, 2.95, 0.34, 0.15);   
+  transition:all $duration cubic-bezier(0, 2.95, 0.34, 0.15);   
 }

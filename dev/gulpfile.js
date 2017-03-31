@@ -54,7 +54,7 @@ gulp.task('sass', ['fonts', 'images'], function(){
 					.pipe(gulp.dest('../')) // сохраняем CSS  в конечный каталог 
 					.pipe(browserSync.reload({stream: true}))
 
-				})
+})
 
 
 gulp.task('scripts', function(){
@@ -62,7 +62,7 @@ gulp.task('scripts', function(){
 	//собираем библиотеки, ужимаем и инсталируем в тему
 	gulp.src([
 		'app/libs/jquery/dist/jquery.js',
-		'app/libs/js-cookie/src/js.cookie.js'
+		'app/libs/js-cookie/src/js.cookie.js',
 		])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
@@ -76,8 +76,10 @@ gulp.task('scripts', function(){
 	.pipe(gulp.dest('../js/'));
 
 	//ужимаем commonjs и инсталируем в тему
-	gulp.src('app/js/common.js')
-	.pipe(uglify('common.min.js'))
+	gulp.src(['app/js/common.js',
+		// 'app/libs/js-helpers/fw-form-helpers.js'
+		])
+	// .pipe(uglify('common.min.js'))
 	.pipe(gulp.dest('../js/'))
 	.pipe(browserSync.reload({stream: true}));
 })

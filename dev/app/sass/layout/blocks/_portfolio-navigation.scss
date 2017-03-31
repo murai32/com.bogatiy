@@ -1,0 +1,62 @@
+/*! Page heading block  */
+
+.portfolio-navigation{
+	margin-top: 14*$rtm;
+	position: fixed;
+
+	&__item{
+		&_previous{
+			float: left;
+		}
+		&_next{
+			float: right;
+		}
+	}
+
+	&__link{
+		text-decoration: none;
+		color: $text-color;
+
+		&:hover{
+			color: $hover-color;
+		}
+	}
+	&__img{
+		display: block;
+		@include clearfix;
+
+		& > svg{
+			.arrrow {
+				stroke: $text-color;
+			}
+		}
+		& > svg:hover{
+			.arrrow {
+				stroke: $hover-color;
+			}
+		}
+		&_previous > svg{
+			transform: rotate(180deg);
+			height: 2*$rtm;
+			float: left;
+		}
+		&_next > svg{			
+			height: 2*$rtm;
+			float: right;
+		}
+	}
+	&__name{
+		@include vr($font-display, $font-size-xs);
+		font-style: italic;
+		font-weight: bold;
+
+		&_previous {
+			float: left;
+		}
+		&_next {
+			float: right;
+		}
+	}
+}
+
+/*! END Page heading block  */

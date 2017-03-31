@@ -1,4 +1,7 @@
+/*! Heading text box  */
+
 	.textbox-heading {
+
 		// background-color: red;
 		width: 100%;
 		overflow: hidden;
@@ -10,6 +13,7 @@
 			font-size: $font-size-m;
 			text-transform: uppercase;
 			position: relative;
+			letter-spacing: .1em;
 
 			&:before{
 				content: '';
@@ -33,3 +37,5 @@
 			@include grid-span(3,3);
 		}
 	}
+
+	/*! END Heading text box  */

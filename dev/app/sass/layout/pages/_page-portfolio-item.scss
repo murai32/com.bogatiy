@@ -1,0 +1,11 @@
+/*! Content page-portfolio-item */
+
+.site-content_template_portfolio-item{
+	&__portfolio-navigation{
+		// @include grid-span(14, 1);
+		position: fixed;
+		// background-color: red;
+	}
+}
+
+/*! END Content page-portfolio-item */

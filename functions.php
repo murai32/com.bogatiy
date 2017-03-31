@@ -77,9 +77,9 @@ add_action( 'after_setup_theme', 'bogatiy_pavel_portfolio_setup' );
 */
 
 function vardump($var) {
-      echo '<pre>';
-      var_dump($var);
-      echo '</pre>';
+	echo '<pre>';
+	var_dump($var);
+	echo '</pre>';
 }
 
 /**
@@ -169,7 +169,45 @@ require get_template_directory() . '/lib/plugins/Custom_widgets/my_widget.php';
 
 require get_template_directory() . "/lib/plugins/Custom_inputs_page/theme_settings_admin_section.php";
 
+/**
+*	Add hook to prevent registration of Unyson contact-form item option 
+* reference: https://github.com/ThemeFuse/Unyson/issues/967
+**/
+function unyson_exclude_item($flag){
+		return true;
+}
 
+// list of excluded items
+add_filter('fw_ext_builder:option_type:form-builder:exclude_item_type:text', 'unyson_exclude_item');
+add_filter('fw_ext_builder:option_type:form-builder:exclude_item_type:email', 'unyson_exclude_item');
+add_filter('fw_ext_builder:option_type:form-builder:exclude_item_type:textarea', 'unyson_exclude_item');
+add_filter('fw_ext_builder:option_type:form-builder:exclude_item_type:form-header-title', 'unyson_exclude_item');
+
+
+/**
+ * Customize form errors msg: http://manual.unyson.io/en/latest/helpers/form.html
+ * Solution from: https://github.com/ThemeFuse/Unyson/issues/1474
+ * @param FW_Form $form
+ * @internal
+ */
+function _action_theme_fw_form_errors_display($form) {
+    /**
+     * Once the errors was accessed/requested
+     * the form will cancel/abort the default errors display
+     */
+    $errors = $form->get_errors();
+
+    echo '<ul class="your-custom-errors-class">';
+    foreach ($errors as $input_name => $error_message) {
+        echo fw_html_tag(
+            'li',
+            array('data-input-name' => $input_name),
+            $error_message
+        );
+    }
+    echo '</ul>';
+}
+add_action('fw_form_display_errors_frontend', '_action_theme_fw_form_errors_display');
 
 /**
  * Enqueue scripts and styles.
@@ -177,7 +215,7 @@ require get_template_directory() . "/lib/plugins/Custom_inputs_page/theme_settin
 function bogatiy_pavel_portfolio_scripts() {
 	wp_enqueue_style( 'bogatiy-pavel-portfolio-style', get_stylesheet_uri() );
 
-// отключаем требуху из коробки
+	// отключаем требуху из коробки
 	wp_deregister_script('jquery');
 
 	
@@ -188,12 +226,18 @@ function bogatiy_pavel_portfolio_scripts() {
 	remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 
-//подключаем скрипты темы
+	//подключаем скрипты темы
 
 	wp_enqueue_script( 'libs-theme', get_template_directory_uri().'/js/libs.min.js', array(), NULL, false );
 	wp_enqueue_script( 'common-theme', get_template_directory_uri().'/js/common.min.js', array(), NULL, false );
+	wp_enqueue_script( 'debug', get_template_directory_uri().'/js/debug.js', array(), NULL, false );
 
-	
+
+
+
+
+//тут можно сделать локализацию скриптао
+	wp_localize_script('common.min', 'fwAjaxUrl', admin_url( 'admin-ajax.php', 'relative' ));
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

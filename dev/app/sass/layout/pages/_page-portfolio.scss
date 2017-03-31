@@ -3,7 +3,10 @@
 
 @include layout(){
 	.page-portfolio{
-		margin-top: 6*$rtm;
+		
+		margin-top: $rtm*2;
+		@include clearfix;
+
 		&__filter{
 			@include grid-span(2, 1);
 
@@ -21,7 +24,8 @@
 					// margin-left: .5*$rtm;
 					margin-top: 1*$rtm;
 					color: $violet-color;
-					cursor: pointer;@include hover-transition; 
+					cursor: pointer;
+					@include hover-transition; 
 					&:hover{
 						color: $blue-color;
 						&::after{							
@@ -92,42 +96,96 @@
 	}
 
 	.portfolio-works{
+		
+
 		@include layout(3){
 			$portfolio-bd: 1px solid $text-color;
+			$item-transition: all 0s .4s;
+			
+			&_filler_on{
+				position: relative;
+				overflow: hidden;
 
-			&__item{
-				@include float-span(1, $gutter: 0);
+				&::after{
+					content: '';
+					display:block;
+					position: absolute;
+					top:0;
+					left:100%;
+					width: 100%;
+					height: 100%;
+					background: linear-gradient(60deg, #ae0cea 0%, #5d54f4 75%, #05a4ff 90%);
+				filter: blur(60px);
+
+					animation: move2 .9s cubic-bezier(1, 0, 0.2, 1);
+			// animation: move 3s;
+
+						@keyframes move2{
+							0%{
+								width:0;
+								left:0;
+								opacity: 1;
+							}
+							47%{
+								left: 0;
+								width: 150%;	
+
+							}
+							53%{					 
+								width: 150%;	
+							}
+							99%{
+								opacity: 1
+							}
+							100%{
+								width: 0;
+								left: 100%;
+								opacity: 0;
+								// background-color: $blue-color;
+							}
+						}
+				}
+			}
+
+
+		&__item{
+			@include float-span(1, $gutter: 0);
+			opacity: 	1;
+			transition: $item-transition;
+			
+			&_hide{
+				opacity: 	0;
 			}
 		}
 	}
+}
 
-	.portfolio-item{
-		height: 10*$rtm;
-		position: relative;
-		background: linear-gradient(135deg, #ae0cea -2%, #5d54f4 54%, #05a4ff 96%);	
-		overflow: hidden;
+.portfolio-item{
+	height: 10*$rtm;
+	position: relative;
+	background: linear-gradient(135deg, #ae0cea -2%, #5d54f4 54%, #05a4ff 96%);	
+	overflow: hidden;
 
-		$item-border: 1px solid $text-color;
+	$item-border: 1px solid $text-color;
 
-		border:$item-border;
-		border-right: none;
-		border-bottom: none;
+	border-right: $item-border;
+	border-bottom: $item-border;
 
-		&:nth-child(3n), &:last-child{
-			border-right: $item-border;
-		}
-		&:nth-last-child(-n+3){
-			border-bottom: $item-border;						
-		}
+	&:nth-child(3n+1){
+		border-left: $item-border;
+	}
+	&:nth-child(-n+3){
+		border-top: $item-border;						
+	}
 
-		&__bg-img{ 
-			display: block;
-			width: auto;
-			height: calc(100% + 1px);
-			background-size: cover;
-			transition: all .35s cubic-bezier(0.25, 0.25, 0.13, 0.99);
-		}
-		&:hover &__bg-img{
+	&__bg-img{ 
+		display: block;
+		width: auto;
+		height: calc(100% + 1px);
+		background-size: cover;
+		transition: all .35s cubic-bezier(0.25, 0.25, 0.13, 0.99);
+	}
+	&:hover &__bg-img{
 			// border-radius: 100%;
 			transform: translate(2%,3%) scale(1.1) rotateZ(-.8deg);		
 			opacity: .2;		
@@ -195,7 +253,7 @@
 				line-height: .75*$rtm;
 				letter-spacing: .06em;
 			}		
-/* 		&__name{
+			/*&__name{
 			text-transform: uppercase;
 			font-family: $font-display;
 			font-weight: 400;
@@ -209,58 +267,16 @@
 				line-height: .8*$rtm;
 			}
 		}
-
-
-/* 	.portfolio-item-description{
-		display: block;
-		position: relative;
-		height: 100%;
-		padding: .5*$rtm;	 		
-		color: $text-color-invert;
-		text-decoration: none;
-		
-		&__info{
-			padding: 0;
-			list-style: none;
-			bottom: -.25*$rtm;
-			position: absolute;
-			display: block;
-			top: initial;
-		}
-		&__wrapper{
-			position: relative;
-			height: inherit;
-			overflow: hidden;
-		}
-		&__btn{
-			display: block;		
-			width: 3*$rtm;
-			height: $rtm;
-			position: absolute;
-			border: 1px solid $text-color-invert;
-			font-family: $font-display;
-			font-weight: bold;
-			text-transform: uppercase; 
-			text-align: center; 
-
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-50%);
-		}
-		&__titel{
-			font-family: $font-display;
-			font-weight: 200;
-			text-transform: uppercase;
-			font-size: $font-size-s;
-		}
-		&__tags{
-			font-family: $font-body;
-			font-weight: bold;
-			font-style: italic;
-			font-size: $font-size-s;
-		}
-		} */
-
 	}
+
+	@include layout(){
+		.page-heading{
+			@include clearfix;
+			&__wrapper{
+				@include grid-span(5, 1);		
+			}
+		}
+	}
+
 
 	/*! END Content page-about */

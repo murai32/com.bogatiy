@@ -17,19 +17,40 @@
 		}
 		&__aside{
 			//@include grid-span(3, 1)
+		}
+		&__portfolio-navigation{
+		}
+		&_template_portfolio-item{
+			@include layout(){
+				@include get-grid('detailed', false);
+
+				&__portfolio-navigation{
+					@include grid-span(14, 1);
+				}
+
+
+				.content-area-portfolio-item{
+					@include grid-span(12, 2);
+				}
+
+
+			}
+		}
 	}
-}
 
 // подключаем стили страниц
 @import
-  'pages/_page-about.scss',
-  'pages/_page-portfolio.scss';
+'pages/_page-about.scss',
+'pages/_page-portfolio.scss',
+'pages/_page-contact-me.scss',
+'pages/_page-portfolio-item.scss';
 
 // подключаем шорткоды
 @include layout(5){
 	@import
-		'shortcodes/_skils-sliders-addable.scss',
-		'shortcodes/_heading-text-box.scss';	
+	'shortcodes/_skils-sliders-addable.scss',
+	'shortcodes/_heading-text-box.scss',	
+	'shortcodes/_contacts-list.scss';	
 }
 
 /*! END Content  */

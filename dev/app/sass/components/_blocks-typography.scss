@@ -12,7 +12,7 @@
 	@include vr($font-display, $font-size-m);
 	// position: relative;
 	padding-top: 1.5*$rtm;
-
+	
 	&:before{
 		content: '';
 		display: block;
@@ -20,7 +20,7 @@
 		width: 100%;
 		position: absolute;
 		border-bottom: 1px solid #222;
-		top:.25*$rtm;
+		top:.4*$rtm;
 	}
 	&:after{
 		content: '';
@@ -29,7 +29,7 @@
 		width: .5*$rtm;
 		background-color: #222;
 		position: absolute;
-		top:.25*$rtm;
+		top:.4*$rtm;
 		right: 0;
 	}
 }

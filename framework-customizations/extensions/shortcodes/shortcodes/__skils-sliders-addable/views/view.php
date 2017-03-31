@@ -10,7 +10,6 @@ $custom_class .= "'";
 if ( !empty( $atts['attrs']['custom_id']))  { 
 	$custom_id = " id='" . $atts['attrs']['custom_id'] . "'";
 }; 
-// var_dump($atts['attrs']);
 if ( !empty( $atts['heading']) && !empty( $atts['skills_box']))  {
 
 	$heading = "<section class='skills-sliders__heading'>" . $atts['heading'] . "</section>";

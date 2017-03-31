@@ -17,22 +17,22 @@
 <?php get_header(); ?>
 
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div class="site-content__main site-content__main_page-contact-me">
 
 			<?php
 			while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'page' );
+				get_template_part( 'template-parts/content', 'heading');
+				get_template_part( 'template-parts/content', 'page-contact-me' );
 		
 
 			endwhile; // End of the loop.
 			?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+	</div>
+
 
 <?php
-
-
-
+ //get_sidebar();
+get_footer();
+?>

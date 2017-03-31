@@ -5,9 +5,20 @@ footer{
 	width: 100%;
 	position: relative;	
 	float: left;
-	background: linear-gradient(125deg, $main-gradient);
+	overflow: hidden;
+	
+	&::before{
+		top: 50%;
+		left: 50%;
+		content:'';
+		position: absolute;
+		width: 120%;
+		height: 800%;
+		background: linear-gradient(125deg, $main-gradient);
+		transform: translate(-50%, -50%);
+		animation: rotate-footer-bg 10s cubic-bezier(0.89, 0.35, 0.43, 0.8) infinite;
+	}	
 }
-
 .site-footer{
 	@include get-grid('base', false);
 
@@ -114,14 +125,24 @@ footer{
 					width: $item-width;
 					height: $item-height;
 					&:hover{
-				    margin: -.1rem 0 0 -0.15rem;
-				    width: 2.4rem;
-				    height: 2.4rem;
+						margin: -.1rem 0 0 -0.15rem;
+						width: 2.4rem;
+						height: 2.4rem;
 					}
 				}
 			}			
 		}
 	}
 }
+/*! Footer->animations*/
 
+	@keyframes rotate-footer-bg { 
+		from{
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+		to { 
+			transform:translate(-50%, -50%) rotate(360deg); 
+		} 
+	}
+/*! END Footer->animations*/	
 /*! END Footer */

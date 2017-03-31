@@ -1,0 +1,44 @@
+/*! Content page-contact-me */
+
+@include layout(16){
+	.page-contact-me{
+		
+		// @include grid-span(8,1);
+		.get-in-touch-section{
+			@include grid-span(8,8);
+			position: relative;
+
+			&::before {
+				$el-color: rgba($blue-color, .2);
+
+				content: '';
+				display: block;
+				position: absolute;
+				top:-20%;
+				right:0;		
+				border-top: 15*$rtm solid transparent;
+				border-bottom: 10*$rtm solid transparent; 				
+				border-right: 45*$rtm solid $el-color; 
+				// transform: rotate(-15deg);
+				filter: blur(150px);
+			}
+		}
+		.contact-list-section {
+			@include grid-span(7,1);
+		}
+
+
+
+
+		.contacts-list{
+			@include clearfix;
+		}
+
+		margin-top: 3*$rtm;
+		.contact-form{
+				// display: hidden;
+			}
+		}
+	}
+
+/*! END Content page-contact-me */
